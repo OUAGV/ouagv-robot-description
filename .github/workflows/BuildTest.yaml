@@ -44,11 +44,3 @@ jobs:
         if: steps.check_rosdistro_repos_files.outputs.files_exists == 'false' && steps.check_repos_files.outputs.files_exists == 'false'
         with:
           ros2-distro: ${{ matrix.rosdistro }}
-      - name: Notify Slack
-        uses: 8398a7/action-slack@v2
-        if: failure()
-        with:
-          status: ${{ job.status }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
