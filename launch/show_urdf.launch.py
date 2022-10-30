@@ -6,7 +6,8 @@ from ament_index_python.packages import get_package_share_directory
 
 import launch
 
-share_dir_path = os.path.join(get_package_share_directory("ouagv_robot_description"))
+share_dir_path = os.path.join(
+    get_package_share_directory("ouagv_robot_description"))
 urdf_path = os.path.join(share_dir_path, "urdf", "urdf_test.urdf")
 rviz_config_path = os.path.join(share_dir_path, "rviz", "show_urdf.rviz")
 
