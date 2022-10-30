@@ -16,6 +16,9 @@ find_package(std_msgs REQUIRED)
 install(DIRECTORY urdf/
   DESTINATION share/${PROJECT_NAME}/urdf)
 
+install(DIRECTORY rviz/
+  DESTINATION share/${PROJECT_NAME}/rviz)
+
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
