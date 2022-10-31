@@ -26,13 +26,17 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 
 def generate_launch_description():
+    gazebo_ros2_control_demos_path = os.path.join(
+        get_package_share_directory('ouagv_robot_description'))
+
+    world_file = os.path.join(
+        gazebo_ros2_control_demos_path, 'world', 'empty.world')
+
+    print(world_file)
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
-    )
-
-    gazebo_ros2_control_demos_path = os.path.join(
-        get_package_share_directory('ouagv_robot_description'))
+        launch_arguments={"world": world_file}.items())
 
     xacro_file = os.path.join(gazebo_ros2_control_demos_path,
                               'xacro',
@@ -51,8 +55,9 @@ def generate_launch_description():
 
     spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
                         arguments=['-topic', 'robot_description',
-                                   '-entity', 'cartpole'],
-                        output='screen')
+                                   '-entity', 'diff_drive'],
+                        output='screen',
+                        parameters=[{"use_sim_time": True}])
 
     load_joint_state_controller = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'start',
@@ -66,11 +71,17 @@ def generate_launch_description():
         output='screen'
     )
 
+    set_contoller_manager_use_sim_time = ExecuteProcess(
+        cmd=['ros2', 'param', 'set', '/controller_manager', 'use_sim_time', 'true'],
+        output='screen')
+
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=spawn_entity,
-                on_exit=[load_joint_state_controller],
+                on_exit=[load_joint_state_controller,
+                         set_contoller_manager_use_sim_time
+                         ],
             )
         ),
         RegisterEventHandler(

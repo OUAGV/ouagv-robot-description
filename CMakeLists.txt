@@ -22,6 +22,9 @@ install(DIRECTORY rviz/
 install(DIRECTORY config/
   DESTINATION share/${PROJECT_NAME}/config)
 
+install(DIRECTORY world/
+  DESTINATION share/${PROJECT_NAME}/world)
+
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
