@@ -13,11 +13,14 @@ find_package(std_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
-install(DIRECTORY urdf/
-  DESTINATION share/${PROJECT_NAME}/urdf)
+install(DIRECTORY xacro/
+  DESTINATION share/${PROJECT_NAME}/xacro)
 
 install(DIRECTORY rviz/
   DESTINATION share/${PROJECT_NAME}/rviz)
+
+install(DIRECTORY config/
+  DESTINATION share/${PROJECT_NAME}/config)
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
