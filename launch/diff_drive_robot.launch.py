@@ -80,6 +80,7 @@ def generate_launch_description():
             event_handler=OnProcessExit(
                 target_action=spawn_entity,
                 on_exit=[load_joint_state_controller,
+                         # これないとgazeboのdiff_drive_controllerからodomが出ない
                          set_contoller_manager_use_sim_time
                          ],
             )
