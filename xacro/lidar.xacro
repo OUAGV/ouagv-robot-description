@@ -22,6 +22,8 @@
                 </material>
             </visual>
         </link>
-
+        <gazebo reference="lidar_link">
+            <material>Gazebo/Red</material>
+        </gazebo>
     </xacro:macro>
 </robot>

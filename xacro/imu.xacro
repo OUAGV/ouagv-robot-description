@@ -27,6 +27,9 @@
                 </geometry>
             </collision>
         </link>
+        <gazebo reference="imu_link">
+            <material>Gazebo/Blue</material>
+        </gazebo>
 
     </xacro:macro>
 </robot>
