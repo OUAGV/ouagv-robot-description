@@ -24,13 +24,13 @@
         <link name="${prefix}_wheel">
             <collision>
                 <geometry>
-                    <sphere radius="0.3" />
+                    <cylinder radius="0.125" length="0.085" />
                 </geometry>
             </collision>
 
             <visual>
                 <geometry>
-                    <sphere radius="0.3" />
+                    <cylinder radius="0.125" length="0.085" />
                 </geometry>
                 <material name="red">
                     <color rgba="1 0 0 1" />
