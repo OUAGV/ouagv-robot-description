@@ -32,9 +32,10 @@
                 <geometry>
                     <sphere radius="0.3" />
                 </geometry>
-                <material name="black" />
+                <material name="red">
+                    <color rgba="1 0 0 1" />
+                </material>
             </visual>
-
             <inertial>
                 <mass value="2" />
                 <inertia ixx="0.145833"
@@ -45,5 +46,8 @@
                     izz="0.125" />
             </inertial>
         </link>
+        <gazebo reference="${prefix}_wheel">
+            <material>Gazebo/Red</material>
+        </gazebo>
     </xacro:macro>
 </robot>

@@ -32,7 +32,9 @@ def generate_launch_description():
     world_file = os.path.join(
         gazebo_ros2_control_demos_path, 'world', 'empty.world')
 
-    print(world_file)
+    rviz_config_path = os.path.join(
+        gazebo_ros2_control_demos_path, "rviz", "show_urdf.rviz")
+
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
@@ -75,6 +77,13 @@ def generate_launch_description():
         cmd=['ros2', 'param', 'set', '/controller_manager', 'use_sim_time', 'true'],
         output='screen')
 
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        output="both",
+        arguments=["-d", [rviz_config_path]],
+    )
+
     return LaunchDescription([
         RegisterEventHandler(
             event_handler=OnProcessExit(
@@ -94,4 +103,5 @@ def generate_launch_description():
         gazebo,
         node_robot_state_publisher,
         spawn_entity,
+        rviz
     ])
