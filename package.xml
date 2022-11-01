@@ -3,7 +3,7 @@
 <package format="3">
   <name>ouagv_robot_description</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>ouagvのロボットのシミュレーター</description>
   <maintainer email="hbvcg00@gmail.com">tatsuki</maintainer>
   <license>TODO: License declaration</license>
 
