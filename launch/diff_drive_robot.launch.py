@@ -24,10 +24,16 @@ from launch.actions import (ExecuteProcess, IncludeLaunchDescription,
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
+gazebo_ros2_control_demos_path = os.path.join(
+    get_package_share_directory('ouagv_robot_description'))
+xacro_file = os.path.join(gazebo_ros2_control_demos_path,
+                          'xacro',
+                          'diff_drive_robot.urdf.xacro')
+urdf_path = os.path.join(
+    gazebo_ros2_control_demos_path, 'xacro', 'diff_drive_robot.urdf')
+
 
 def generate_launch_description():
-    gazebo_ros2_control_demos_path = os.path.join(
-        get_package_share_directory('ouagv_robot_description'))
 
     world_file = os.path.join(
         gazebo_ros2_control_demos_path, 'world', 'empty.world')
@@ -40,13 +46,12 @@ def generate_launch_description():
             get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
         launch_arguments={"world": world_file}.items())
 
-    xacro_file = os.path.join(gazebo_ros2_control_demos_path,
-                              'xacro',
-                              'diff_drive_robot.urdf.xacro')
-
-    doc = xacro.parse(open(xacro_file))
-    xacro.process_doc(doc)
-    params = {'robot_description': doc.toxml()}
+    doc = xacro.process_file(xacro_file)
+    robot_desc = doc.toprettyxml(indent='  ')
+    f = open(urdf_path, 'w')
+    f.write(robot_desc)
+    f.close()
+    params = {'robot_description': robot_desc}
 
     node_robot_state_publisher = Node(
         package='robot_state_publisher',
