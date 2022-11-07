@@ -22,3 +22,13 @@
   - タイヤの幅は 1 つ 0.085m
 - 長さ 0.5m
 - 高さ 0.7m(一番高い部分で)
+
+## gzclient が起動しない時
+
+```
+. /usr/share/gazebo/setup.sh
+```
+
+で治ることがある（なんで？）
+
+参照: https://answers.ros.org/question/358847/cannot-launch-gzclient-on-a-launch-file-results-in-shared_ptr-assertion-error/
