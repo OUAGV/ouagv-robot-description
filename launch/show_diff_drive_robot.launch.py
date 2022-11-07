@@ -14,10 +14,10 @@
 
 import os
 
-import xacro
 from ament_index_python.packages import get_package_share_directory
 from launch_ros.actions import Node
 
+import xacro
 from launch import LaunchDescription
 from launch.actions import (ExecuteProcess, IncludeLaunchDescription,
                             RegisterEventHandler)

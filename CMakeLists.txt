@@ -25,6 +25,9 @@ install(DIRECTORY config/
 install(DIRECTORY world/
   DESTINATION share/${PROJECT_NAME}/world)
 
+install(DIRECTORY models/
+  DESTINATION share/${PROJECT_NAME}/models)
+
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
