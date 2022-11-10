@@ -21,8 +21,10 @@ import xacro
 from launch import LaunchDescription
 from launch.actions import (ExecuteProcess, IncludeLaunchDescription,
                             RegisterEventHandler)
+from launch.conditions import IfCondition, UnlessCondition
 from launch.event_handlers import OnProcessExit
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
 
 gazebo_ros2_control_demos_path = os.path.join(
     get_package_share_directory("ouagv_robot_description")
@@ -36,7 +38,7 @@ urdf_path = os.path.join(
 
 
 def generate_launch_description():
-
+    show_rviz = LaunchConfiguration('show_rviz', default=True)
     world_file = os.path.join(
         gazebo_ros2_control_demos_path, "world", "empty.world")
 
@@ -111,6 +113,7 @@ def generate_launch_description():
         executable="rviz2",
         output="both",
         arguments=["-d", [rviz_config_path]],
+        condition=IfCondition(show_rviz)
     )
 
     return LaunchDescription(
