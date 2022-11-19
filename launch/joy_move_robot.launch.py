@@ -26,8 +26,8 @@ def generate_launch_description():
     joy_to_twist = Node(
         package="joy_to_twist",
         executable="joy_to_twist_node",
-        parameters=[{"longitudal_input_ratio": 1.0},
-                    {"lateral_input_ratio": 0.3}],
+        parameters=[{"longitudal_input_ratio": 0.8},
+                    {"lateral_input_ratio": 0.5}],
         remappings=[
             ("/target_twist", "/diff_drive_base_controller/cmd_vel_unstamped")],
     )
