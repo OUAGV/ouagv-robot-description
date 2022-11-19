@@ -32,3 +32,9 @@
 で治ることがある（なんで？）
 
 参照: https://answers.ros.org/question/358847/cannot-launch-gzclient-on-a-launch-file-results-in-shared_ptr-assertion-error/
+
+# 知見
+
+diff_drive_controller の wheel_radius とか wheel_separation は URDF に基づいて
+
+正確に値を渡さないと LaserScan がロボットと一緒に動くようになるエラーが起こる
