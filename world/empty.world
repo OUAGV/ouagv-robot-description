@@ -11,6 +11,8 @@
         </include>
         <include>
             <uri>model://willowgarage</uri>
+
+            <!-- <uri>model://turtlebot3_world</uri> -->
         </include>
     </world>
 </sdf>
