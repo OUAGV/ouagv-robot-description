@@ -1,6 +1,7 @@
 controller_manager:
   ros__parameters:
     update_rate: 100 # Hz
+    use_sim_time: true
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -24,7 +25,8 @@ diff_drive_base_controller:
     pose_covariance_diagonal: [0.001, 0.001, 0.0, 0.0, 0.0, 0.01]
     twist_covariance_diagonal: [0.001, 0.0, 0.0, 0.0, 0.0, 0.01]
 
-    enable_odom_tf: false
+    enable_odom_tf: true
+    open_loop: true
     odom_frame_id: odom
     base_frame_id: base_link
 
@@ -37,7 +39,7 @@ diff_drive_base_controller:
     # Velocity and acceleration limits
     # Whenever a min_* is unspecified, default to -max_*
     linear.x.has_velocity_limits: true
-    linear.x.has_acceleration_limits: false
+    linear.x.has_acceleration_limits: true
     linear.x.has_jerk_limits: false
     linear.x.max_velocity: 0.4
     linear.x.min_velocity: -0.4
@@ -46,7 +48,7 @@ diff_drive_base_controller:
     linear.x.min_jerk: 0.0
 
     angular.z.has_velocity_limits: true
-    angular.z.has_acceleration_limits: false
+    angular.z.has_acceleration_limits: true
     angular.z.has_jerk_limits: false
     angular.z.max_velocity: 0.4
     angular.z.min_velocity: -0.4

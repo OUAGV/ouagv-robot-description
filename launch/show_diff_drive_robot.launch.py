@@ -85,7 +85,7 @@ def generate_launch_description():
             "control",
             "load_controller",
             "--set-state",
-            "start",
+            "active",
             "joint_state_broadcaster",
         ],
         output="screen",
@@ -97,14 +97,9 @@ def generate_launch_description():
             "control",
             "load_controller",
             "--set-state",
-            "start",
+            "active",
             "diff_drive_base_controller",
         ],
-        output="screen",
-    )
-
-    set_contoller_manager_use_sim_time = ExecuteProcess(
-        cmd=["ros2", "param", "set", "/controller_manager", "use_sim_time", "true"],
         output="screen",
     )
 
@@ -123,8 +118,6 @@ def generate_launch_description():
                     target_action=spawn_entity,
                     on_exit=[
                         load_joint_state_controller,
-                        # これないとgazeboのdiff_drive_controllerからodomが出ない
-                        set_contoller_manager_use_sim_time,
                     ],
                 )
             ),
