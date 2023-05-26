@@ -29,7 +29,7 @@ def generate_launch_description():
         parameters=[{"longitudal_input_ratio": 0.4},
                     {"lateral_input_ratio": 0.4}],
         remappings=[
-            ("/target_twist", "/diff_drive_base_controller/cmd_vel_unstamped")],
+            ("/target_twist", "/cmd_vel")],
     )
 
     return LaunchDescription([diff_drive_robot, joy_node, joy_to_twist])

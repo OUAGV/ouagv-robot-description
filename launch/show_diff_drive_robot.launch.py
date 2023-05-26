@@ -113,20 +113,20 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            RegisterEventHandler(
-                event_handler=OnProcessExit(
-                    target_action=spawn_entity,
-                    on_exit=[
-                        load_joint_state_controller,
-                    ],
-                )
-            ),
-            RegisterEventHandler(
-                event_handler=OnProcessExit(
-                    target_action=load_joint_state_controller,
-                    on_exit=[load_joint_trajectory_controller],
-                )
-            ),
+            # RegisterEventHandler(
+            #     event_handler=OnProcessExit(
+            #         target_action=spawn_entity,
+            #         on_exit=[
+            #             load_joint_state_controller,
+            #         ],
+            #     )
+            # ),
+            # RegisterEventHandler(
+            #     event_handler=OnProcessExit(
+            #         target_action=load_joint_state_controller,
+            #         on_exit=[load_joint_trajectory_controller],
+            #     )
+            # ),
             gazebo,
             node_robot_state_publisher,
             spawn_entity,
