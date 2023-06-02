@@ -26,10 +26,10 @@ def generate_launch_description():
     joy_to_twist = Node(
         package="joy_to_twist",
         executable="joy_to_twist_node",
-        parameters=[{"longitudal_input_ratio": 0.4},
+        parameters=[{"longitudal_input_ratio": 1.0},
                     {"lateral_input_ratio": 0.4}],
         remappings=[
-            ("/target_twist", "diff_drive_base_controller/cmd_vel")],
+            ("/target_twist", "diff_drive_base_controller/cmd_vel_unstamped")],
     )
 
     return LaunchDescription([diff_drive_robot, joy_node, joy_to_twist])
