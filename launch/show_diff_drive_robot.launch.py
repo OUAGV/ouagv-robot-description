@@ -40,7 +40,7 @@ urdf_path = os.path.join(
 def generate_launch_description():
     show_rviz = LaunchConfiguration('show_rviz', default=True)
     world_file = os.path.join(
-        gazebo_ros2_control_demos_path, "world", "mcity.world")
+        gazebo_ros2_control_demos_path, "world", "empty.world")
 
     rviz_config_path = os.path.join(
         gazebo_ros2_control_demos_path, "rviz", "show_urdf.rviz"
@@ -74,7 +74,8 @@ def generate_launch_description():
     spawn_entity = Node(
         package="gazebo_ros",
         executable="spawn_entity.py",
-        arguments=["-topic", "robot_description", "-entity", "diff_drive"],
+        arguments=["-topic", "robot_description", "-entity",
+                   "diff_drive", "-x", "0", "-y", "-5", "-z", "0"],
         output="screen",
         parameters=[{"use_sim_time": True}],
     )
