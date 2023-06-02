@@ -40,7 +40,7 @@ urdf_path = os.path.join(
 def generate_launch_description():
     show_rviz = LaunchConfiguration('show_rviz', default=True)
     world_file = os.path.join(
-        gazebo_ros2_control_demos_path, "world", "empty.world")
+        gazebo_ros2_control_demos_path, "world", "mcity.world")
 
     rviz_config_path = os.path.join(
         gazebo_ros2_control_demos_path, "rviz", "show_urdf.rviz"
