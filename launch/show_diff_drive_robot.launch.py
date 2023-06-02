@@ -75,7 +75,7 @@ def generate_launch_description():
         package="gazebo_ros",
         executable="spawn_entity.py",
         arguments=["-topic", "robot_description", "-entity",
-                   "diff_drive", "-x", "0", "-y", "-5", "-z", "0"],
+                   "diff_drive"],
         output="screen",
         parameters=[{"use_sim_time": True}],
     )
