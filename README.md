@@ -1,4 +1,26 @@
 # ouagv_robot_description
+## environment
+- ROS2 Humble
+- Ubuntu 22.04
+
+# usage
+```
+ros2 launch ouagv_robot_description show_diff_robot.launch.py
+```
+で
+- gazebo
+- rviz
+- ros2_control
+
+が立ち上がる
+
+## publish  
+- /diff_drive_base_controller/odom
+- /scan
+- /imu/data
+
+## subscribe
+- /diff_drive_base_controller/cmd_vel_unstamped
 
 ## robot の parameter
 
