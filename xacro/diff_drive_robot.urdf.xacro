@@ -13,21 +13,22 @@
     <xacro:wheel prefix="left" parent="base_link" xyz="0.125 0.21 0.125" rpy="-1.5707 0 0" />
     <xacro:wheel prefix="right" parent="base_link" xyz="0.125 -0.21 0.125" rpy="-1.5707 0 0" />
     <xacro:caster parent="base_link" xyz="-0.25 0 0.05" rpy="1.57 0 0" />
-    <xacro:lidar parent="base_link" xyz="0.3 0 0.2" rpy="0 0 0" />
+    <xacro:lidar parent="base_link" xyz="0.3 0 0.28" rpy="0 0 0" />
     <xacro:imu parent="base_link" xyz="0 0 0.8" rpy="0 0 0" />
-    <!-- <xacro:diff_drive_control left_joint="left_wheel_joint" right_joint="right_wheel_joint" /> -->
+    <xacro:diff_drive_control left_joint="left_wheel_joint" right_joint="right_wheel_joint" />
 
 
     <gazebo>
         <!-- Joint state publisher -->
-        <!-- <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
             <robot_param>robot_description</robot_param>
             <robot_param_node>robot_state_publisher</robot_param_node>
             <parameters>$(find ouagv_robot_description)/config/diff_drive_controller.yaml</parameters>
-        </plugin> -->
-        <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+        </plugin>
+        <!-- <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
             <ros>
                 <remapping>cmd_vel:=cmd_vel</remapping>
+                <namespace>/diff_drive_base_controller</namespace>
                 <remapping>odom:=odom</remapping>
             </ros>
             <left_joint>left_wheel_joint</left_joint>
@@ -37,7 +38,7 @@
             <max_wheel_torque>20</max_wheel_torque>
             <max_wheel_acceleration>1.0</max_wheel_acceleration>
             <publish_odom>true</publish_odom>
-            <publish_odom_tf>true</publish_odom_tf>
+            <publish_odom_tf>false</publish_odom_tf>
             <publish_wheel_tf>true</publish_wheel_tf>
             <update_rate>30</update_rate>
 
@@ -46,7 +47,7 @@
             <base_frame_id>base_link</base_frame_id>
             <robot_base_frame>base_link</robot_base_frame>
             <command_topic>cmd_vel</command_topic>
-        </plugin>
+        </plugin> -->
     </gazebo>
 
 </robot>

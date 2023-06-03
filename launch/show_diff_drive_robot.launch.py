@@ -74,7 +74,8 @@ def generate_launch_description():
     spawn_entity = Node(
         package="gazebo_ros",
         executable="spawn_entity.py",
-        arguments=["-topic", "robot_description", "-entity", "diff_drive"],
+        arguments=["-topic", "robot_description", "-entity",
+                   "diff_drive"],
         output="screen",
         parameters=[{"use_sim_time": True}],
     )
@@ -113,20 +114,20 @@ def generate_launch_description():
 
     return LaunchDescription(
         [
-            # RegisterEventHandler(
-            #     event_handler=OnProcessExit(
-            #         target_action=spawn_entity,
-            #         on_exit=[
-            #             load_joint_state_controller,
-            #         ],
-            #     )
-            # ),
-            # RegisterEventHandler(
-            #     event_handler=OnProcessExit(
-            #         target_action=load_joint_state_controller,
-            #         on_exit=[load_joint_trajectory_controller],
-            #     )
-            # ),
+            RegisterEventHandler(
+                event_handler=OnProcessExit(
+                    target_action=spawn_entity,
+                    on_exit=[
+                        load_joint_state_controller,
+                    ],
+                )
+            ),
+            RegisterEventHandler(
+                event_handler=OnProcessExit(
+                    target_action=load_joint_state_controller,
+                    on_exit=[load_joint_trajectory_controller],
+                )
+            ),
             gazebo,
             node_robot_state_publisher,
             spawn_entity,
