@@ -20,7 +20,7 @@ ros2 launch ouagv_robot_description show_diff_robot.launch.py
 - /imu/data
 
 ## subscribe
-- /diff_drive_base_controller/cmd_vel
+- /diff_drive_base_controller/cmd_vel_unstamped
 
 ## robot の parameter
 
